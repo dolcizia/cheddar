@@ -1,5 +1,5 @@
 import Decimal from 'decimal.js'
-import { ExpenseTypes } from '@/enums';
+import { ExpenseTypes, FrequencyTypes } from '@/enums';
 
 export interface IExpense {
     id: string;
@@ -8,5 +8,6 @@ export interface IExpense {
     amount: Decimal;
     dueDate: Date;
     type: ExpenseTypes;
+    frequency: FrequencyTypes;
     isPaid: boolean;
 }
