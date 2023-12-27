@@ -1,7 +1,7 @@
 export enum ExpenseTypes {
-    Bill,
-    Essential,
-    Discretionary,
-    OneTime,
-    Goal,
+  Bill = 'Bill',
+  Essential = 'Essential',
+  Discretionary = 'Discretionary',
+  OneTime = 'One Time',
+  Goal = 'Goal',
 }

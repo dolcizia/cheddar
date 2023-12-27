@@ -55,7 +55,7 @@ const stubExpenses: Expense[] = [
     amount: new Decimal(50),
     dueDate: new Date(),
     type: ExpenseTypes.Bill,
-    frequency: FrequencyTypes.BiMonthly,
+    frequency: FrequencyTypes.Custom,
     isPaid: false,
   }),
 ];

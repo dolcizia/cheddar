@@ -1,15 +1,26 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
   <div>
-    <li v-for="expense in expenseStore.expenses" :key="expense.id">
+    <div v-for="expense in expenseStore.expenses" :key="expense.id">
+      {{ expense.name }} -
       {{ expense.amount }}
-    </li>
+      {{ expense.dueDate }}
+      {{ expense.type }}
+      {{ expense.frequency }}
+      {{ expense.isPaid }}
+    </div>
     <form @submit.prevent="addExpense">
-      <input type="number" v-model="newExpense.amount" label="amount" />
       <input type="text" v-model="newExpense.name" label="name" />
-      <input type="text" v-model="newExpense.date" label="date" />
-      <input type="text" v-model="newExpense.category" label="category" />
-      <input type="text" v-model="newExpense.frequency" label="frequency" />
+      <input type="number" v-model="newExpense.amount" label="amount" />
+      <input type="date" v-model="newExpense.date" label="date" />
+      <SelectInput
+        v-model="newExpense.category"
+        :options="expenseTypeOptions"
+      />
+      <SelectInput
+        v-model="newExpense.frequency"
+        :options="frequencyTypeOptions"
+      />
       <button type="submit">Add</button>
     </form>
   </div>
@@ -20,15 +31,21 @@ import { onMounted, ref } from 'vue';
 import Decimal from 'decimal.js';
 import { useExpenseStore } from '@/store/ExpenseStore';
 import { ExpenseTypes, FrequencyTypes } from './enums';
+import SelectInput from './components/SelectInput.vue';
 
 const expenseStore = useExpenseStore();
+const selectedExpenseType = ref(ExpenseTypes.Bill);
+const expenseTypeOptions = Object.values(ExpenseTypes);
+
+const selectedFrequencyType = ref(FrequencyTypes.Once);
+const frequencyTypeOptions = Object.values(FrequencyTypes);
 
 const newExpense = ref({
   name: '',
   amount: 0,
   date: new Date(),
-  category: ExpenseTypes.Bill,
-  frequency: FrequencyTypes.Monthly,
+  category: selectedExpenseType.value,
+  frequency: selectedFrequencyType.value,
 });
 
 const addExpense = async () => {

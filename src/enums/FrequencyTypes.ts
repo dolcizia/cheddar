@@ -1,10 +1,9 @@
 export enum FrequencyTypes {
-  Once,
-  BiWeekly,
-  Monthly,
-  BiMonthly,
-  Yearly,
-  Custom,
+  Once = 'Once',
+  BiWeekly = 'Bi-Weekly',
+  Monthly = 'Monthly',
+  Yearly = 'Yearly',
+  Custom = 'Custom',
 }
 
 export enum Days {
