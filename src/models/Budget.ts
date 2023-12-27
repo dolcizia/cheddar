@@ -1,22 +1,21 @@
-import Decimal from 'decimal.js';
 import { IBudget } from '@/interfaces';
-import { Expense } from '@/models';
+import { Expense, Income } from '@/models';
 
 export class Budget implements IBudget {
   id: string;
   description?: string;
   expenses: Expense[];
-  income: Decimal;
+  incomes: Income[];
 
   constructor(
     id: string,
-    income: Decimal,
+    income: Income[],
     expenses: Expense[],
     description?: string,
   ) {
     this.id = id;
     this.description = description;
-    this.income = income;
+    this.incomes = income;
     this.expenses = expenses;
   }
 }
