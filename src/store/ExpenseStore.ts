@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import Database from '@/database';
+import { Database } from '@/database';
 import { Expense } from '@/models';
 
 const db = new Database();

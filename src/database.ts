@@ -25,28 +25,37 @@ const stubExpenses: Expense[] = [
   new Expense({
     id: uuid(),
     name: 'Groceries',
-    amount: new Decimal(200),
+    amount: new Decimal(500),
     dueDate: new Date(),
     type: ExpenseTypes.Essential,
-    frequency: FrequencyTypes.Weekly,
+    frequency: FrequencyTypes.Monthly,
     isPaid: false,
   }),
   new Expense({
     id: uuid(),
     name: 'Gas',
-    amount: new Decimal(100),
+    amount: new Decimal(150),
     dueDate: new Date(),
     type: ExpenseTypes.Essential,
-    frequency: FrequencyTypes.Weekly,
+    frequency: FrequencyTypes.Monthly,
     isPaid: false,
   }),
   new Expense({
     id: uuid(),
     name: 'Electricity',
-    amount: new Decimal(100),
+    amount: new Decimal(75),
     dueDate: new Date(),
     type: ExpenseTypes.Bill,
     frequency: FrequencyTypes.Monthly,
+    isPaid: false,
+  }),
+  new Expense({
+    id: uuid(),
+    name: 'Garbage',
+    amount: new Decimal(50),
+    dueDate: new Date(),
+    type: ExpenseTypes.Bill,
+    frequency: FrequencyTypes.BiMonthly,
     isPaid: false,
   }),
 ];
@@ -85,12 +94,10 @@ export class Database {
   }
 
   addExpense(expense: Expense) {
-    this.budget.expenses.push(expense);
     return Promise.resolve(expense);
   }
 
   addIncome(income: Income) {
-    this.budget.incomes.push(income);
     return Promise.resolve(income);
   }
 }

@@ -28,11 +28,13 @@ module.exports = {
   plugins: ['@typescript-eslint', 'vue'],
   rules: {
     'prettier/prettier': [
-      'error',
+      'warn',
       {
         singleQuote: true,
         semi: true,
       },
     ],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
   },
 };
