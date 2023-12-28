@@ -1,6 +1,7 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
   <div>
+    <p>Hello Vue 3</p>
     <div v-for="expense in expenseStore.expenses" :key="expense.id">
       {{ expense.name }} -
       {{ expense.amount }}
