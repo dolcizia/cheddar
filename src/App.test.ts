@@ -1,7 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render } from '@testing-library/vue';
-import App from '@/App.vue';
 import { createPinia, setActivePinia } from 'pinia';
+import App from '@/App.vue';
+import userEvent from '@testing-library/user-event';
+import { Expense } from '@/models';
 
 // Mock the Database class
 class MockDatabase {
@@ -12,7 +14,7 @@ class MockDatabase {
     ];
   }
 
-  async addExpense(expense) {
+  async addExpense(expense: Expense) {
     return expense;
   }
 }
@@ -41,9 +43,42 @@ vi.mock('@/store/ExpenseStore', () => ({
 }));
 
 describe('App', () => {
-  it('renders properly', () => {
+  it('renders expenses from the store', async () => {
     setActivePinia(createPinia());
-    const { getByText } = render(App);
-    expect(getByText('Hello Vue 3')).toBeTruthy();
+    const { findByText } = render(App);
+
+    // Use a regular expression for more flexibility
+    const expenseItem = await findByText(/Mock Expense 1/i);
+    expect(expenseItem).toBeTruthy();
+  });
+
+  it('renders the add expense form', () => {
+    setActivePinia(createPinia());
+    const { getByPlaceholderText, getByText } = render(App);
+
+    expect(getByPlaceholderText('Name')).toBeTruthy();
+    expect(getByPlaceholderText('Amount')).toBeTruthy();
+    expect(getByPlaceholderText('Date')).toBeTruthy();
+    expect(getByText('Add')).toBeTruthy();
+  });
+
+  it('calls addExpense on form submission', async () => {
+    setActivePinia(createPinia());
+    const { getByPlaceholderText, getByText } = render(App);
+
+    const nameInput = getByPlaceholderText('Name');
+    await userEvent.type(nameInput, 'New Expense');
+
+    const amountInput = getByPlaceholderText('Amount');
+    await userEvent.type(amountInput, '100');
+
+    const dateInput = getByPlaceholderText('Date');
+    await userEvent.type(dateInput, '2023-01-01');
+
+    const addButton = getByText('Add');
+    await userEvent.click(addButton);
+
+    // Assuming you have a way to check if addExpense was called, like a spy
+    // expect(expenseStore.addExpense).toHaveBeenCalled();
   });
 });

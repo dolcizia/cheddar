@@ -11,9 +11,9 @@
       {{ expense.isPaid }}
     </div>
     <form @submit.prevent="addExpense">
-      <input type="text" v-model="newExpense.name" label="name" />
-      <input type="number" v-model="newExpense.amount" label="amount" />
-      <input type="date" v-model="newExpense.date" label="date" />
+      <input type="text" v-model="newExpense.name" placeholder="Name" />
+      <input type="number" v-model="newExpense.amount" placeholder="Amount" />
+      <input type="date" v-model="newExpense.date" placeholder="Date" />
       <SelectInput
         v-model="newExpense.category"
         :options="expenseTypeOptions"
