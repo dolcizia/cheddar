@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import Decimal from 'decimal.js';
 import { Expense, Budget, Income } from '@/models';
-import { ExpenseTypes, FrequencyTypes } from '@/enums';
+import { ExpenseTypes, FrequencyTypes, RecordTypes } from '@/enums';
 
 const stubExpenses: Expense[] = [
   new Expense({
@@ -12,6 +12,7 @@ const stubExpenses: Expense[] = [
     type: ExpenseTypes.Bill,
     frequency: FrequencyTypes.Monthly,
     isPaid: false,
+    recordType: RecordTypes.Expense,
   }),
   new Expense({
     id: uuid(),
@@ -21,6 +22,7 @@ const stubExpenses: Expense[] = [
     type: ExpenseTypes.Bill,
     frequency: FrequencyTypes.Monthly,
     isPaid: false,
+    recordType: RecordTypes.Expense,
   }),
   new Expense({
     id: uuid(),
@@ -30,6 +32,7 @@ const stubExpenses: Expense[] = [
     type: ExpenseTypes.Essential,
     frequency: FrequencyTypes.Monthly,
     isPaid: false,
+    recordType: RecordTypes.Expense,
   }),
   new Expense({
     id: uuid(),
@@ -39,6 +42,7 @@ const stubExpenses: Expense[] = [
     type: ExpenseTypes.Essential,
     frequency: FrequencyTypes.Monthly,
     isPaid: false,
+    recordType: RecordTypes.Expense,
   }),
   new Expense({
     id: uuid(),
@@ -48,6 +52,7 @@ const stubExpenses: Expense[] = [
     type: ExpenseTypes.Bill,
     frequency: FrequencyTypes.Monthly,
     isPaid: false,
+    recordType: RecordTypes.Expense,
   }),
   new Expense({
     id: uuid(),
@@ -57,6 +62,7 @@ const stubExpenses: Expense[] = [
     type: ExpenseTypes.Bill,
     frequency: FrequencyTypes.Custom,
     isPaid: false,
+    recordType: RecordTypes.Expense,
   }),
 ];
 
@@ -66,6 +72,7 @@ const stubIncomes: Income[] = [
     name: 'Paycheck',
     amount: new Decimal(2000),
     frequency: FrequencyTypes.BiWeekly,
+    recordType: RecordTypes.Income,
   }),
   new Income({
     id: uuid(),
@@ -73,6 +80,7 @@ const stubIncomes: Income[] = [
     description: 'Grandma is the best',
     amount: new Decimal(300),
     frequency: FrequencyTypes.Once,
+    recordType: RecordTypes.Income,
   }),
 ];
 

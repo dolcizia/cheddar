@@ -1,14 +1,15 @@
 import Decimal from 'decimal.js';
-import { IExpense } from '@/interfaces';
-import { ExpenseTypes, FrequencyTypes } from '@/enums';
+import { IExpense } from '@/models';
+import { ExpenseTypes, FrequencyTypes, RecordTypes } from '@/enums';
 export class Expense implements IExpense {
-  public id: string;
-  public name: string;
-  public amount: Decimal;
-  public type: ExpenseTypes;
-  public frequency: FrequencyTypes;
-  public dueDate: Date;
-  public isPaid: boolean;
+  id: string;
+  name: string;
+  amount: Decimal;
+  type: ExpenseTypes;
+  frequency: FrequencyTypes;
+  dueDate: Date;
+  isPaid: boolean;
+  recordType: RecordTypes.Expense;
 
   constructor(expense: IExpense) {
     this.id = expense.id;
@@ -18,5 +19,6 @@ export class Expense implements IExpense {
     this.frequency = expense.frequency;
     this.dueDate = expense.dueDate;
     this.isPaid = expense.isPaid;
+    this.recordType = RecordTypes.Expense;
   }
 }

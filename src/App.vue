@@ -1,23 +1,21 @@
 <!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
   <div>
-    <div v-for="expense in expenseStore.expenses" :key="expense.id">
-      {{ expense.name }} -
-      {{ expense.amount }}
-      {{ expense.dueDate }}
-      {{ expense.type }}
-      {{ expense.frequency }}
-      {{ expense.isPaid }}
-    </div>
+    <BudgetListItem
+      v-for="expense in expenseStore.expenses"
+      :key="expense.id"
+      :record="expense"
+    />
     <ExpenseForm @add-expense="addExpense" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import { useExpenseStore } from '@/store/ExpenseStore';
 import { Expense } from '@/models';
 import ExpenseForm from './components/ExpenseForm.vue';
+import BudgetListItem from './components/BudgetListItem.vue';
 
 const expenseStore = useExpenseStore();
 

@@ -1,6 +1,6 @@
 import Decimal from 'decimal.js';
-import { IIncome } from '@/interfaces';
-import { FrequencyTypes } from '@/enums';
+import { IIncome } from '@/models';
+import { FrequencyTypes, RecordTypes } from '@/enums';
 
 export class Income implements IIncome {
   id: string;
@@ -8,6 +8,7 @@ export class Income implements IIncome {
   description?: string;
   amount: Decimal;
   frequency: FrequencyTypes;
+  recordType: RecordTypes.Income;
 
   constructor(income: IIncome) {
     this.id = income.id;
@@ -15,5 +16,6 @@ export class Income implements IIncome {
     this.description = income.description;
     this.amount = income.amount;
     this.frequency = income.frequency;
+    this.recordType = RecordTypes.Income;
   }
 }
