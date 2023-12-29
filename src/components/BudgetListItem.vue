@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { IExpense, IIncome, FinancialRecord } from '@/interfaces';
+import { IExpense, IIncome, FinancialRecord } from '@/models';
 import { RecordTypes } from '@/enums';
 
 const props = defineProps({
@@ -27,6 +27,11 @@ function isIncome(record: FinancialRecord): record is IIncome {
 
 <style scoped lang="scss">
 .budget-list-item {
-  // Your styles here
+  background-color: #2e2e2e;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 </style>
